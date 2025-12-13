@@ -506,3 +506,261 @@ section.hero > * {
     border: 1px solid black;
   }
 }
+
+
+/* ============================================
+   TESTIMONIALS SECTION
+   ============================================ */
+
+.testimonials {
+  padding: 4rem 0;
+  background: linear-gradient(180deg, rgba(10, 10, 10, 0.5) 0%, rgba(15, 15, 25, 0.8) 100%);
+  border-top: 1px solid var(--border-color);
+}
+
+.testimonials h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  background: var(--gradient-spectrum);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.testimonial-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+  background: rgba(138, 204, 213, 0.1);
+  border-color: var(--accent-primary);
+  transform: translateY(-5px);
+}
+
+.testimonial-card .stars {
+  color: #FFD700;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.2rem;
+}
+
+.testimonial-card p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.testimonial-author {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.testimonial-author strong {
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.testimonial-author span {
+  color: var(--accent-primary);
+  font-size: 0.85rem;
+}
+
+/* ============================================
+   CONTACT SECTION
+   ============================================ */
+
+.contact-section {
+  padding: 4rem 0;
+  background: linear-gradient(180deg, rgba(15, 15, 25, 0.8) 0%, rgba(10, 10, 10, 0.5) 100%);
+  border-top: 1px solid var(--border-color);
+}
+
+.contact-section h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  background: var(--gradient-spectrum);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.contact-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  background: rgba(138, 204, 213, 0.1);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(138, 204, 213, 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.info-item {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+}
+
+.info-item h4 {
+  color: var(--accent-primary);
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.info-item p {
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.info-item a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.info-item a:hover {
+  color: var(--accent-pink);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+  .contact-content {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-section h2,
+  .testimonials h2 {
+    font-size: 2rem;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-section,
+  .testimonials {
+    padding: 2rem 0;
+  }
+
+  .contact-content {
+    gap: 1.5rem;
+  }
+
+  .contact-info {
+    gap: 1rem;
+  }
+
+  .info-item {
+    padding: 1rem;
+  }
+}

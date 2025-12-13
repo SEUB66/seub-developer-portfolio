@@ -13,16 +13,35 @@
   <link rel="stylesheet" href="/src/styles/backgrounds.css">
   
   <style>
+    /* Full Spectrum Gradient */
+    .spectrum-gradient {
+      background: linear-gradient(135deg, #8ACCD5 0%, #8E7DBE 50%, #FF90BB 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 4s linear infinite;
+    }
+
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% center;
+      }
+      100% {
+        background-position: 200% center;
+      }
+    }
+
     /* Navigation */
     nav {
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(10, 10, 10, 0.95);
+      background: rgba(10, 10, 10, 0.98);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.12);
       z-index: 1000;
-      padding: 1rem 0;
+      padding: 0.75rem 0;
     }
 
     nav .container {
@@ -31,8 +50,21 @@
       align-items: center;
     }
 
-    nav .logo {
-      font-size: 1.5rem;
+    nav .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    nav .logo-img {
+      width: 40px;
+      height: 40px;
+      border-radius: 0.5rem;
+      object-fit: cover;
+    }
+
+    nav .logo-text {
+      font-size: 1.2rem;
       font-weight: 700;
       background: linear-gradient(135deg, #8ACCD5 0%, #8E7DBE 100%);
       -webkit-background-clip: text;
@@ -57,15 +89,36 @@
       color: #8ACCD5;
     }
 
-    /* Hero Section */
-    .hero {
+    /* Banner Section */
+    .banner-section {
+      width: 100%;
+      background: #0a0a0a;
+      padding: 2rem 0;
       margin-top: 60px;
-      background: linear-gradient(180deg, #0a0a0a 0%, #1a0a2e 50%, #0a0a0a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+      border-bottom: 2px solid rgba(138, 204, 213, 0.3);
+    }
+
+    .banner-img {
+      max-width: 100%;
+      max-height: 300px;
+      object-fit: contain;
+      border-radius: 1rem;
+      box-shadow: 0 0 30px rgba(138, 204, 213, 0.3);
+    }
+
+    /* Hero Section with Animated Flame Background */
+    .hero {
+      background: #0a0a0a;
       position: relative;
       overflow: hidden;
       display: flex;
       align-items: center;
-      min-height: 80vh;
+      min-height: 70vh;
+      padding: 3rem 0;
     }
 
     .hero::before {
@@ -78,8 +131,32 @@
       background-image: url('/images/flame-bg.jpg');
       background-size: cover;
       background-position: center;
-      opacity: 0.4;
+      background-attachment: fixed;
+      opacity: 0.6;
       mix-blend-mode: screen;
+      z-index: 0;
+      animation: flameFlicker 6s ease-in-out infinite;
+    }
+
+    @keyframes flameFlicker {
+      0%, 100% {
+        opacity: 0.5;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.7;
+        transform: scale(1.02);
+      }
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(10, 10, 10, 0.3) 0%, rgba(26, 10, 46, 0.4) 50%, rgba(10, 10, 10, 0.3) 100%);
       z-index: 0;
     }
 
@@ -350,6 +427,52 @@
       color: rgba(255, 255, 255, 0.5);
     }
 
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #8ACCD5 0%, #8E7DBE 100%);
+      color: #0a0a0a;
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 0 20px rgba(138, 204, 213, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid #8ACCD5;
+      color: #8ACCD5;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(138, 204, 213, 0.1);
+      box-shadow: 0 0 15px rgba(138, 204, 213, 0.3);
+    }
+
+    .btn-sm {
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+    }
+
+    .btn-lg {
+      padding: 1rem 2rem;
+      font-size: 1.125rem;
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
       nav ul {
@@ -358,7 +481,6 @@
       }
 
       .hero {
-        margin-top: 50px;
         min-height: 60vh;
       }
 
@@ -385,14 +507,21 @@
       .cta h2 {
         font-size: 1.875rem;
       }
+
+      .banner-img {
+        max-height: 200px;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Navigation -->
+  <!-- Navigation with Logo -->
   <nav>
     <div class="container">
-      <div class="logo">Seub Germain</div>
+      <div class="logo-section">
+        <img src="/images/favicon.jpg" alt="Seub Germain Logo" class="logo-img">
+        <div class="logo-text">Seub Germain</div>
+      </div>
       <ul>
         <li><a href="#services">Services</a></li>
         <li><a href="#mission">Mission</a></li>
@@ -402,16 +531,109 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- Banner Section -->
+  <section class="banner-section">
+    <img src="/images/banner.jpg" alt="Seub Germain - ApplepPunk Banner" class="banner-img">
+  </section>
+
+  <!-- Hero Section with Animated Flame Background -->
   <section class="hero">
     <div class="container">
       <div class="hero-content">
-        <h1>Custom Apps Built for <span class="gradient-text">Your Success</span></h1>
+        <h1 class="spectrum-gradient">Custom Apps Built for Your Success</h1>
         <p class="subtitle">100% Unique. 100% Secure. 100% Yours.</p>
         <p>Empower your small business with bespoke digital solutions. No off-the-shelf compromises—only custom, autonomous apps designed specifically for your needs.</p>
         <div class="hero-cta">
           <button class="btn btn-primary btn-lg">Start Your Project</button>
           <button class="btn btn-secondary btn-lg">View Our Work</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Works Section -->
+  <section id="works" class="featured-works">
+    <div class="container">
+      <h2>Featured Works</h2>
+      <p style="text-align: center; color: rgba(255, 255, 255, 0.7); margin-bottom: 3rem; font-size: 1.1rem;">Explore our latest projects and portfolio pieces</p>
+      
+      <div class="works-grid">
+        <div class="work-card">
+          <div class="work-image" style="background: linear-gradient(135deg, #8ACCD5 0%, #8E7DBE 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem;">🎨</div>
+          <div class="work-content">
+            <h3>Brand Identity Design</h3>
+            <p>Complete branding package including logo, color palette, and brand guidelines for a tech startup.</p>
+            <div class="work-meta">
+              <span class="work-type">Logo Design</span>
+              <span class="work-date">2024</span>
+            </div>
+            <a href="#" class="btn btn-secondary btn-sm">View Project →</a>
+          </div>
+        </div>
+
+        <div class="work-card">
+          <div class="work-image" style="background: linear-gradient(135deg, #FF90BB 0%, #8ACCD5 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem;">🌐</div>
+          <div class="work-content">
+            <h3>E-Commerce Platform</h3>
+            <p>Custom-built e-commerce solution with payment integration, inventory management, and analytics dashboard.</p>
+            <div class="work-meta">
+              <span class="work-type">Web Design</span>
+              <span class="work-date">2024</span>
+            </div>
+            <a href="#" class="btn btn-secondary btn-sm">View Project →</a>
+          </div>
+        </div>
+
+        <div class="work-card">
+          <div class="work-image" style="background: linear-gradient(135deg, #8E7DBE 0%, #FF90BB 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem;">💻</div>
+          <div class="work-content">
+            <h3>Employee Management System</h3>
+            <p>100% custom app for HR management including payroll, attendance tracking, and performance reviews.</p>
+            <div class="work-meta">
+              <span class="work-type">Custom App</span>
+              <span class="work-date">2024</span>
+            </div>
+            <a href="#" class="btn btn-secondary btn-sm">View Project →</a>
+          </div>
+        </div>
+
+        <div class="work-card">
+          <div class="work-image" style="background: linear-gradient(135deg, #1BCFB4 0%, #8ACCD5 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem;">🎬</div>
+          <div class="work-content">
+            <h3>Product Launch Campaign</h3>
+            <p>Professional video production and marketing campaign for product launch including ads and social content.</p>
+            <div class="work-meta">
+              <span class="work-type">Video Production</span>
+              <span class="work-date">2024</span>
+            </div>
+            <a href="#" class="btn btn-secondary btn-sm">View Project →</a>
+          </div>
+        </div>
+
+        <div class="work-card">
+          <div class="work-image" style="background: linear-gradient(135deg, #FF6B6B 0%, #FF90BB 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem;">👥</div>
+          <div class="work-content">
+            <h3>Internal Portal System</h3>
+            <p>Secure employee portal with document management, team collaboration tools, and internal communications.</p>
+            <div class="work-meta">
+              <span class="work-type">Employee Portal</span>
+              <span class="work-date">2024</span>
+            </div>
+            <a href="#" class="btn btn-secondary btn-sm">View Project →</a>
+          </div>
+        </div>
+
+        <div class="work-card">
+          <div class="work-image" style="background: linear-gradient(135deg, #FFD93D 0%, #FF6B6B 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem;">🚀</div>
+          <div class="work-content">
+            <h3>SaaS Platform</h3>
+            <p>Full-stack SaaS solution with user authentication, subscription management, and advanced analytics.</p>
+            <div class="work-meta">
+              <span class="work-type">Full-Stack</span>
+              <span class="work-date">2024</span>
+            </div>
+            <a href="#" class="btn btn-secondary btn-sm">View Project →</a>
+          </div>
         </div>
       </div>
     </div>
@@ -575,6 +797,109 @@
     </div>
   </section>
 
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="testimonials">
+    <div class="container">
+      <h2>What Our Clients Say</h2>
+      <p style="text-align: center; color: rgba(255, 255, 255, 0.7); margin-bottom: 3rem; font-size: 1.1rem;">Real feedback from companies we've transformed</p>
+      
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"Seub delivered exactly what we needed—a custom app that's secure, fast, and completely ours. No compromises."</p>
+          <div class="testimonial-author">
+            <strong>Sarah Chen</strong>
+            <span>CEO, TechStart Inc.</span>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"The employee portal transformed how our team collaborates. It's intuitive, powerful, and built specifically for us."</p>
+          <div class="testimonial-author">
+            <strong>Marcus Johnson</strong>
+            <span>HR Director, Global Solutions</span>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"From branding to web design to custom development—Seub handled everything with professionalism and creativity."</p>
+          <div class="testimonial-author">
+            <strong>Elena Rodriguez</strong>
+            <span>Founder, Creative Agency</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <h2>Let's Build Something Amazing</h2>
+      <p style="text-align: center; color: rgba(255, 255, 255, 0.7); margin-bottom: 2rem; font-size: 1.1rem;">Tell us about your project and let's create something extraordinary</p>
+      
+      <div class="contact-content">
+        <form class="contact-form" id="contactForm">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" required placeholder="John Doe">
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required placeholder="john@company.com">
+          </div>
+
+          <div class="form-group">
+            <label for="company">Company Name</label>
+            <input type="text" id="company" name="company" placeholder="Your Company">
+          </div>
+
+          <div class="form-group">
+            <label for="service">Service Interested In</label>
+            <select id="service" name="service" required>
+              <option value="">Select a service...</option>
+              <option value="logo">Logo Design</option>
+              <option value="video">Video Production</option>
+              <option value="web">Web Design</option>
+              <option value="app">Custom App</option>
+              <option value="portal">Employee Portal</option>
+              <option value="fullstack">Full-Stack Solution</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Tell us about your project</label>
+            <textarea id="message" name="message" rows="5" required placeholder="Describe your vision and requirements..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg">Send Inquiry</button>
+        </form>
+
+        <div class="contact-info">
+          <div class="info-item">
+            <h4>📧 Email</h4>
+            <p><a href="mailto:hello@applepunk.com">hello@applepunk.com</a></p>
+          </div>
+          <div class="info-item">
+            <h4>💬 Response Time</h4>
+            <p>Usually within 24 hours</p>
+          </div>
+          <div class="info-item">
+            <h4>🌐 Timezone</h4>
+            <p>EST (UTC-5)</p>
+          </div>
+          <div class="info-item">
+            <h4>🚀 Ready to Start?</h4>
+            <p>Let's discuss your project today</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer>
     <div class="container">
@@ -646,9 +971,44 @@
       });
     }, observerOptions);
 
-    document.querySelectorAll('.service-card, .feature-item').forEach(el => {
+    document.querySelectorAll('.service-card, .feature-item, .testimonial-card, .work-card').forEach(el => {
       observer.observe(el);
     });
+
+    // Contact form handling
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = {
+          name: document.getElementById('name').value,
+          email: document.getElementById('email').value,
+          company: document.getElementById('company').value,
+          service: document.getElementById('service').value,
+          message: document.getElementById('message').value
+        };
+        
+        // Log form data (in production, send to backend)
+        console.log('Form submitted:', formData);
+        
+        // Show success message
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Message Sent!';
+        submitBtn.style.background = '#10b981';
+        
+        // Reset form
+        contactForm.reset();
+        
+        // Reset button after 3 seconds
+        setTimeout(() => {
+          submitBtn.textContent = originalText;
+          submitBtn.style.background = '';
+        }, 3000);
+      });
+    }
   </script>
 </body>
 </html>
