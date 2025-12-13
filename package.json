@@ -1,0 +1,19 @@
+{
+  "name": "seub-germain-portfolio",
+  "version": "1.0.0",
+  "description": "Seub Germain - Developer Portfolio & Service Hub",
+  "main": "index.js",
+  "scripts": {
+    "dev": "http-server client -p 3000 -c-1",
+    "build": "echo 'Static site - no build needed'",
+    "serve": "http-server client -p 8080"
+  },
+  "keywords": [
+    "portfolio",
+    "developer",
+    "custom-apps",
+    "web-design"
+  ],
+  "author": "Seub Germain",
+  "license": "MIT"
+}

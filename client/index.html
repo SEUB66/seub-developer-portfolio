@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Seub Germain - Developer Portfolio & Service Hub. Custom app development, web design, video production, and branding for small companies.">
+  <meta name="theme-color" content="#0a0a0a">
+  
+  <title>Seub Germain - Developer Portfolio & Service Hub</title>
+  
+  <link rel="icon" href="/images/favicon.jpg" type="image/jpeg">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link rel="stylesheet" href="/src/styles/backgrounds.css">
+  
+  <style>
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      z-index: 1000;
+      padding: 1rem 0;
+    }
+
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #8ACCD5 0%, #8E7DBE 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    nav a {
+      color: rgba(255, 255, 255, 0.7);
+      transition: color 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    nav a:hover {
+      color: #8ACCD5;
+    }
+
+    /* Hero Section */
+    .hero {
+      margin-top: 60px;
+      background: linear-gradient(180deg, #0a0a0a 0%, #1a0a2e 50%, #0a0a0a 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      min-height: 80vh;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('/images/flame-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.4;
+      mix-blend-mode: screen;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      line-height: 1.1;
+    }
+
+    .hero .subtitle {
+      font-size: 1.5rem;
+      color: #8ACCD5;
+      margin-bottom: 2rem;
+      font-weight: 500;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 600px;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* Services Section */
+    .services {
+      background: #0a0a0a;
+      padding: 4rem 0;
+    }
+
+    .services h2 {
+      text-align: center;
+      margin-bottom: 3rem;
+      font-size: 2.5rem;
+    }
+
+    .service-card {
+      background: rgba(15, 15, 25, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 0.75rem;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(138, 204, 213, 0.1), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .service-card:hover::before {
+      left: 100%;
+    }
+
+    .service-card:hover {
+      border-color: #8ACCD5;
+      box-shadow: 0 0 20px rgba(138, 204, 213, 0.2);
+      transform: translateY(-8px);
+    }
+
+    .service-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #8ACCD5 0%, #8E7DBE 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .service-card h3 {
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .service-card p {
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Mission Section */
+    .mission {
+      background: linear-gradient(135deg, rgba(138, 204, 213, 0.05) 0%, rgba(142, 125, 190, 0.05) 100%);
+      padding: 4rem 0;
+      border-top: 1px solid rgba(138, 204, 213, 0.2);
+      border-bottom: 1px solid rgba(138, 204, 213, 0.2);
+    }
+
+    .mission-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .mission h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .mission-highlight {
+      background: rgba(138, 204, 213, 0.1);
+      border-left: 4px solid #8ACCD5;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    .mission-highlight strong {
+      color: #8ACCD5;
+    }
+
+    /* Features Section */
+    .features {
+      padding: 4rem 0;
+      background: #0a0a0a;
+    }
+
+    .features h2 {
+      text-align: center;
+      margin-bottom: 3rem;
+      font-size: 2.5rem;
+    }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-item {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .feature-icon {
+      font-size: 1.5rem;
+      color: #1BCFB4;
+      flex-shrink: 0;
+    }
+
+    .feature-item h4 {
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-item p {
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    /* CTA Section */
+    .cta {
+      background: linear-gradient(135deg, #8ACCD5 0%, #8E7DBE 50%, #FF90BB 100%);
+      padding: 4rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: moveBackground 20s linear infinite;
+    }
+
+    @keyframes moveBackground {
+      0% {
+        transform: translate(0, 0);
+      }
+      100% {
+        transform: translate(50px, 50px);
+      }
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta h2 {
+      color: #0a0a0a;
+      margin-bottom: 1rem;
+      font-size: 2.5rem;
+    }
+
+    .cta p {
+      color: rgba(10, 10, 10, 0.8);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .cta .btn {
+      background: #0a0a0a;
+      color: #8ACCD5;
+      border: 2px solid #0a0a0a;
+      font-weight: 700;
+    }
+
+    .cta .btn:hover {
+      background: transparent;
+      color: #0a0a0a;
+    }
+
+    /* Footer */
+    footer {
+      background: rgba(10, 10, 10, 0.95);
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 3rem 0 1rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    footer .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    footer h4 {
+      color: #ffffff;
+      margin-bottom: 1rem;
+    }
+
+    footer ul {
+      list-style: none;
+    }
+
+    footer ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    footer ul a {
+      color: rgba(255, 255, 255, 0.7);
+      transition: color 0.3s ease;
+    }
+
+    footer ul a:hover {
+      color: #8ACCD5;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding-top: 2rem;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul {
+        gap: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .hero {
+        margin-top: 50px;
+        min-height: 60vh;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero .subtitle {
+        font-size: 1.2rem;
+      }
+
+      .mission-content {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-cta {
+        flex-direction: column;
+      }
+
+      .hero-cta .btn {
+        width: 100%;
+      }
+
+      .cta h2 {
+        font-size: 1.875rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <div class="logo">Seub Germain</div>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#mission">Mission</a></li>
+        <li><a href="#features">Why Us</a></li>
+        <li><a href="#contact" class="btn btn-primary btn-sm">Get Started</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Custom Apps Built for <span class="gradient-text">Your Success</span></h1>
+        <p class="subtitle">100% Unique. 100% Secure. 100% Yours.</p>
+        <p>Empower your small business with bespoke digital solutions. No off-the-shelf compromises—only custom, autonomous apps designed specifically for your needs.</p>
+        <div class="hero-cta">
+          <button class="btn btn-primary btn-lg">Start Your Project</button>
+          <button class="btn btn-secondary btn-lg">View Our Work</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="services">
+    <div class="container">
+      <h2>Our Services</h2>
+      <div class="grid grid-3">
+        <div class="service-card">
+          <div class="service-icon">🎨</div>
+          <h3>Logo Design</h3>
+          <p>Distinctive brand identities that capture your vision and resonate with your audience.</p>
+          <a href="#" class="btn btn-secondary btn-sm">Learn More →</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🎬</div>
+          <h3>Video Clip Ads</h3>
+          <p>Engaging video content that tells your story and drives conversions.</p>
+          <a href="#" class="btn btn-secondary btn-sm">Learn More →</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🌐</div>
+          <h3>Web Design</h3>
+          <p>Modern, responsive websites that showcase your brand and engage customers.</p>
+          <a href="#" class="btn btn-secondary btn-sm">Learn More →</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">💻</div>
+          <h3>Custom Apps</h3>
+          <p>Tailored applications built from scratch for your unique business requirements.</p>
+          <a href="#" class="btn btn-secondary btn-sm">Learn More →</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">👥</div>
+          <h3>Employee Portals</h3>
+          <p>Internal platforms that streamline operations and enhance team collaboration.</p>
+          <a href="#" class="btn btn-secondary btn-sm">Learn More →</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🚀</div>
+          <h3>Full-Stack Solutions</h3>
+          <p>Complete digital transformation from concept to deployment and beyond.</p>
+          <a href="#" class="btn btn-secondary btn-sm">Learn More →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission Section -->
+  <section id="mission" class="mission">
+    <div class="container">
+      <div class="mission-content">
+        <div>
+          <h2>Our Mission</h2>
+          <p>We believe small companies deserve enterprise-grade solutions without enterprise-grade budgets. Every app we build is 100% custom, 100% autonomous, and 100% yours.</p>
+          <div class="mission-highlight">
+            <strong>Uniqueness = Security</strong><br>
+            Custom-built apps are inherently more secure than off-the-shelf solutions because they're not targeted by mass attacks.
+          </div>
+          <div class="mission-highlight">
+            <strong>No Licensing Restrictions</strong><br>
+            Own your code. No vendor lock-in. No recurring licensing fees. True digital independence.
+          </div>
+        </div>
+        <div>
+          <h2>What We Offer</h2>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(138, 204, 213, 0.2);">
+              <strong style="color: #8ACCD5;">✓ From Blank</strong><br>
+              <span style="color: rgba(255, 255, 255, 0.7);">No templates, no frameworks—built exactly as you envision it.</span>
+            </li>
+            <li style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(138, 204, 213, 0.2);">
+              <strong style="color: #8ACCD5;">✓ .com Domain Setup</strong><br>
+              <span style="color: rgba(255, 255, 255, 0.7);">Professional online presence from day one.</span>
+            </li>
+            <li style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(138, 204, 213, 0.2);">
+              <strong style="color: #8ACCD5;">✓ Database Integration</strong><br>
+              <span style="color: rgba(255, 255, 255, 0.7);">Scalable, secure data management tailored to your needs.</span>
+            </li>
+            <li>
+              <strong style="color: #8ACCD5;">✓ 100% Autonomous</strong><br>
+              <span style="color: rgba(255, 255, 255, 0.7);">Your app runs independently—no external dependencies.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features">
+    <div class="container">
+      <h2>Why Choose Us</h2>
+      <div class="feature-list">
+        <div class="feature-item">
+          <div class="feature-icon">🔒</div>
+          <div>
+            <h4>Maximum Security</h4>
+            <p>Custom architecture means no known vulnerabilities. Your app is unique, making it inherently more secure.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon">⚡</div>
+          <div>
+            <h4>Blazing Fast</h4>
+            <p>Optimized for your specific use case. No bloat, no unnecessary features—pure performance.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon">🎯</div>
+          <div>
+            <h4>Perfectly Tailored</h4>
+            <p>Every feature, every design element, every line of code is built specifically for your business.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon">📈</div>
+          <div>
+            <h4>Scalable Growth</h4>
+            <p>Built to grow with your business. Add features, expand capabilities—without limitations.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon">💰</div>
+          <div>
+            <h4>No Hidden Costs</h4>
+            <p>Transparent pricing. No licensing fees. No vendor lock-in. You own everything.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon">🤝</div>
+          <div>
+            <h4>Dedicated Support</h4>
+            <p>Your success is our success. Ongoing support and maintenance included.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section id="contact" class="cta">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to Build Something Great?</h2>
+        <p>Let's create a custom solution that transforms your business.</p>
+        <button class="btn btn-lg">Schedule a Consultation</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Logo Design</a></li>
+          <li><a href="#">Web Design</a></li>
+          <li><a href="#">Custom Apps</a></li>
+          <li><a href="#">Video Production</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Our Mission</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">Email</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Seub Germain. All rights reserved. Building custom futures, one app at a time.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scroll behavior for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Add animation to elements on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.service-card, .feature-item').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
